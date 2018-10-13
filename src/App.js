@@ -29,9 +29,9 @@ class App extends Component {
 	}
 
 	handleFormSubmit(e) {
-		//Login on form submit
 		e.preventDefault();
 
+		// This is axios. It is how client communicates with server.
 		return axios
 			.get('/trick')
 			.then(res => {
