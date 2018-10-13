@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
-import CreateDeadline from './components/CreateDeadline';
+import Collapsible from './Collapsible.js';
 import ShowDeadline from './components/ShowDeadline';
+
 
 class App extends Component {
 	constructor() {
@@ -11,20 +12,21 @@ class App extends Component {
 	}
 
 	state = {
-		deadlineIds: []
-	};
+    deadlineIds: []
+  };
 
 	componentDidMount() {
 		axios.get('/deadlines').then(res => {
 			this.setState({ deadlineIds: res.data });
 		});
-	}
 
+
+	}
 	render() {
 		const deadlineIds = this.state.deadlineIds;
 		return (
 			<div className="App">
-				<CreateDeadline addDeadline={this.addDeadline.bind(this)} />
+				<Collapsible />
 				{deadlineIds.map(function(deadlineId, i) {
 					return (
 						<li key={i}>
@@ -36,10 +38,7 @@ class App extends Component {
 		);
 	}
 
-	addDeadline(id) {
-		let newDeadlineIds = this.state.deadlineIds.concat(id);
-		this.setState({ deadlineIds: newDeadlineIds });
-	}
 }
+
 
 export default App;
