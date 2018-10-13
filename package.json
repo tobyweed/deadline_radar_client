@@ -4,14 +4,10 @@
 	"private": true,
 	"dependencies": {
 		"axios": "^0.18.0",
-<<<<<<< HEAD
 		"react": "^16.5.2",
-=======
 		"moment": "^2.22.2",
 		"prop-types": "^15.6.2",
-		"react": "^16.5.2",
 		"react-datepicker": "^1.6.0",
->>>>>>> page_setup
 		"react-dom": "^16.5.2",
 		"react-scripts": "2.0.4"
 	},
