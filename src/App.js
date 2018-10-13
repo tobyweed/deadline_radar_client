@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 import CreateDeadline from './components/CreateDeadline';
 
@@ -12,6 +13,12 @@ class App extends Component {
 		deadlines: []
 	};
 
+	componentDidMount() {
+		axios.get('/deadlines').then(res => {
+			this.setState({ deadlines: res.data });
+		});
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -21,7 +28,7 @@ class App extends Component {
 	}
 
 	addDeadline(id) {
-		let newDeadlines = this.state.deadlines.concat('1');
+		let newDeadlines = this.state.deadlines.concat(id);
 		this.setState({ deadlines: newDeadlines });
 	}
 }
