@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
-import Collapsible from "./Collapsible.js";
 
 import CreateDeadline from './components/CreateDeadline';
 
@@ -12,16 +9,20 @@ class App extends Component {
 	}
 
 	state = {
-		data: ''
+		deadlines: []
 	};
 
 	render() {
 		return (
 			<div className="App">
-
-				<CreateDeadline />
+				<CreateDeadline addDeadline={this.addDeadline.bind(this)} />
 			</div>
 		);
+	}
+
+	addDeadline(id) {
+		let newDeadlines = this.state.deadlines.concat('1');
+		this.setState({ deadlines: newDeadlines });
 	}
 }
 
