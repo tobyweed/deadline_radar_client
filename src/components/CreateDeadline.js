@@ -90,6 +90,7 @@ class CreateDeadline extends Component {
 				num_of_hours: this.state.numOfHours
 			})
 			.then(res => {
+				this.props.addDeadline(res.data.id);
 				this.setState({ data: 'Success!' });
 			})
 			.catch(err => {
