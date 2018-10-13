@@ -1,3 +1,5 @@
+//Not currently in use
+
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -7,13 +9,13 @@ class Date extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			startDate: moment()
+			date: moment()
 		};
 		this.handleChange = this.handleChange.bind(this);
 	}
 
 	handleChange(date) {
-		this.setState({ startDate: date });
+		this.props.setDate(date);
 	}
 
 	render() {
