@@ -4,41 +4,49 @@ import axios from 'axios';
 
 import Collapsible from './Collapsible.js';
 import ShowDeadline from './components/ShowDeadline';
+import Registration from './components/Registration';
+import AuthService from './AuthService';
+import Logout from './components/Logout';
+import Timeline from './components/Timeline';
 
 class App extends Component {
+	constructor() {
+		super();
+		this.Auth = new AuthService();
+	}
+
 	state = {
-		deadlineIds: []
+		deadlines: []
 	};
 
 	componentDidMount() {
-		axios.get('/deadlines').then(res => {
-			this.setState({ deadlineIds: res.data });
+		//Set headers, then get deadlines
+		this.Auth.initialize().then(res => {
+			axios.get('/deadlines').then(res => {
+				this.setState({ deadlines: res.data });
+			});
 		});
 	}
 
 	render() {
-		const deadlineIds = this.state.deadlineIds;
+		const deadlines = this.state.deadlines;
+		console.log(deadlines);
 		return (
 			<div className="App">
-				<Collapsible addDeadlineId={this.addDeadlineId.bind(this)} />
-				{deadlineIds.map(function(deadlineId, i) {
-					return (
-						<li key={i}>
-							<ShowDeadline id={deadlineId} />
-						</li>
-					);
-				})}
+				<Collapsible addDeadline={this.addDeadline.bind(this)} />
+				<Timeline numHours={100} deadlines={this.state.deadlines} />
+				<Logout rerender={this.rerender.bind(this)} />
 			</div>
 		);
 	}
 
-	addDeadlineId(id) {
-		console.log(this.state.deadlineIds);
-		console.log(id);
-		let newDeadlineIds = this.state.deadlineIds.concat(id);
-		console.log(this.state.deadlineIds);
-		this.setState({ deadlineIds: newDeadlineIds });
-		console.log(this.state.deadlineIds);
+	addDeadline(deadline) {
+		let newDeadlines = this.state.deadlines.concat(deadline);
+		this.setState({ deadlines: newDeadlines });
+	}
+
+	rerender() {
+		this.props.rerender();
 	}
 }
 
