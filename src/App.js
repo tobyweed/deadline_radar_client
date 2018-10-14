@@ -8,8 +8,7 @@ import Registration from './components/Registration';
 import AuthService from './AuthService';
 import Logout from './components/Logout';
 import { Jumbotron, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-// import Navigation from './components/Navigation.js';
-
+import Timeline from './components/Timeline';
 
 class App extends Component {
 	constructor() {
@@ -18,20 +17,21 @@ class App extends Component {
 	}
 
 	state = {
-		deadlineIds: []
+		deadlines: []
 	};
 
 	componentDidMount() {
-		//Set headers, then get deadlineIds
+		//Set headers, then get deadlines
 		this.Auth.initialize().then(res => {
 			axios.get('/deadlines').then(res => {
-				this.setState({ deadlineIds: res.data });
+				this.setState({ deadlines: res.data });
 			});
 		});
 	}
 
 	render() {
-		const deadlineIds = this.state.deadlineIds;
+		const deadlines = this.state.deadlines;
+		console.log(deadlines);
 		return (
 			<div className="App">
 			<Navbar>
@@ -48,20 +48,14 @@ class App extends Component {
 				</Nav>
 			</Navbar>
 				<Collapsible addDeadlineId={this.addDeadlineId.bind(this)} />
-				{deadlineIds.map(function(deadlineId, i) {
-					return (
-						<li key={i}>
-							<ShowDeadline id={deadlineId} />
-						</li>
-					);
-				})}
+        <Timeline numHours={100} deadlines={this.state.deadlines} />
 			</div>
 		);
 	}
 
-	addDeadlineId(id) {
-		let newDeadlineIds = this.state.deadlineIds.concat(id);
-		this.setState({ deadlineIds: newDeadlineIds });
+	addDeadline(deadline) {
+		let newDeadlines = this.state.deadlines.concat(deadline);
+		this.setState({ deadlines: newDeadlines });
 	}
 
 	rerender() {
