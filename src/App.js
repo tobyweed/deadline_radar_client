@@ -41,7 +41,11 @@ class App extends Component {
 					<h2>&nbsp; Deadline Radar</h2>
 			    </Navbar.Brand>
 			  </Navbar.Header>
-
+				<Nav>
+						<NavItem>
+						<Logout rerender={this.rerender.bind(this)} />
+				    </NavItem>
+				</Nav>
 			</Navbar>
 				<Collapsible addDeadlineId={this.addDeadlineId.bind(this)} />
 				{deadlineIds.map(function(deadlineId, i) {
@@ -51,7 +55,6 @@ class App extends Component {
 						</li>
 					);
 				})}
-				<Logout rerender={this.rerender.bind(this)} />
 			</div>
 		);
 	}

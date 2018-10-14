@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from '../AuthService';
+import {Navbar, Nav} from 'react-bootstrap';
 
 class Registration extends Component {
 	constructor() {
@@ -16,6 +17,14 @@ class Registration extends Component {
 	render() {
 		return (
 			<div>
+			<Navbar>
+				<Navbar.Header>
+					<Navbar.Brand>
+					<div className="logo"></div>
+					<h2>&nbsp; Deadline Radar</h2>
+					</Navbar.Brand>
+				</Navbar.Header>
+			</Navbar>
 				<h1 className="registration-form">Sign Up</h1>
 				<form onSubmit={this.handleFormSubmit}>
 					<input

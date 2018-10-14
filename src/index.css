@@ -64,3 +64,12 @@ h2 {
   font-family: "Raleway", sans-serif;
   margin: 0 auto;
 }
+
+img {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.form-submit {
+  color: #000000;
+}
