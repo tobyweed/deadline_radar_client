@@ -24,7 +24,7 @@ class Collapsible extends React.Component {
 					<div>
 						<Well>
 							<CreateDeadline
-								addDeadlineId={this.addDeadlineId.bind(this)}
+								addDeadline={this.addDeadline.bind(this)}
 							/>
 						</Well>
 					</div>
@@ -32,9 +32,9 @@ class Collapsible extends React.Component {
 			</div>
 		);
 	}
-	addDeadlineId(id) {
-		console.log(id);
-		this.props.addDeadlineId(id);
+	addDeadline(deadline) {
+		console.log(deadline);
+		this.props.addDeadline(deadline);
 	}
 }
 
