@@ -4,15 +4,26 @@ import axios from 'axios';
 
 import Collapsible from './Collapsible.js';
 import ShowDeadline from './components/ShowDeadline';
+import Registration from './components/Registration';
+import AuthService from './AuthService';
+import Logout from './components/Logout';
 
 class App extends Component {
+	constructor() {
+		super();
+		this.Auth = new AuthService();
+	}
+
 	state = {
 		deadlineIds: []
 	};
 
 	componentDidMount() {
-		axios.get('/deadlines').then(res => {
-			this.setState({ deadlineIds: res.data });
+		//Set headers, then get deadlineIds
+		this.Auth.initialize().then(res => {
+			axios.get('/deadlines').then(res => {
+				this.setState({ deadlineIds: res.data });
+			});
 		});
 	}
 
@@ -28,17 +39,18 @@ class App extends Component {
 						</li>
 					);
 				})}
+				<Logout rerender={this.rerender.bind(this)} />
 			</div>
 		);
 	}
 
 	addDeadlineId(id) {
-		console.log(this.state.deadlineIds);
-		console.log(id);
 		let newDeadlineIds = this.state.deadlineIds.concat(id);
-		console.log(this.state.deadlineIds);
 		this.setState({ deadlineIds: newDeadlineIds });
-		console.log(this.state.deadlineIds);
+	}
+
+	rerender() {
+		this.props.rerender();
 	}
 }
 
