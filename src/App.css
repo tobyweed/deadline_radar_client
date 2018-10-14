@@ -31,16 +31,33 @@
 	}
 }
 
+.btn-collapse {
+	display: block;
+	margin: 20px;
+}
+
+.collapsible {
+	border: 5px solig black;
+}
+
+.timeline {
+	margin: 20px;
+	padding: 20px;
+	border: 1px solid rgba(10, 80, 160, 0.9);
+	border-radius: 15px;
+	display: inline-block;
+}
+
 .deadline {
-	width: 5px;
-	height: 200px;
-	background-color: red;
+	width: 7px;
+	height: 350px;
+	background-color: rgba(10, 80, 160, 0.9);
 	display: inline-block;
 }
 
 .empty-hour {
-	width: 5px;
-	height: 200px;
-	background-color: grey;
+	width: 7px;
+	height: 350px;
+	background-color: rgba(0, 0, 0, 0);
 	display: inline-block;
 }

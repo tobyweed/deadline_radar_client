@@ -10,7 +10,7 @@ class Timeline extends Component {
 		const allHrs = this.createHourArray();
 		console.log(hrsOfDeadlines);
 		return (
-			<div>
+			<div className="timeline">
 				{allHrs.map(function(hr, i) {
 					if (hrsOfDeadlines.includes(hr)) {
 						return <span className="deadline" key={i} />;

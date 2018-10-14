@@ -12,8 +12,9 @@ class Collapsible extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="collapsible">
 				<Button
+					className="btn-collapse"
 					bsStyle="primary"
 					bsSize="large"
 					onClick={() => this.setState({ open: !this.state.open })}
