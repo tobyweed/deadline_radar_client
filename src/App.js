@@ -7,6 +7,9 @@ import ShowDeadline from './components/ShowDeadline';
 import Registration from './components/Registration';
 import AuthService from './AuthService';
 import Logout from './components/Logout';
+import { Jumbotron, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+// import Navigation from './components/Navigation.js';
+
 
 class App extends Component {
 	constructor() {
@@ -31,6 +34,15 @@ class App extends Component {
 		const deadlineIds = this.state.deadlineIds;
 		return (
 			<div className="App">
+			<Navbar>
+			  <Navbar.Header>
+			    <Navbar.Brand>
+					<div className="logo"></div>
+					<h2>&nbsp; Deadline Radar</h2>
+			    </Navbar.Brand>
+			  </Navbar.Header>
+
+			</Navbar>
 				<Collapsible addDeadlineId={this.addDeadlineId.bind(this)} />
 				{deadlineIds.map(function(deadlineId, i) {
 					return (

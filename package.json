@@ -9,9 +9,12 @@
 		"prop-types": "^15.6.2",
 		"react": "^16.5.2",
 		"react-bootstrap": "^0.32.4",
+		"react-bootstrap-sidebar": "0.0.1",
 		"react-datepicker": "^1.6.0",
 		"react-dom": "^16.5.2",
-		"react-scripts": "2.0.4"
+		"react-scripts": "2.0.4",
+		"react-sidenav": "^3.1.1",
+		"styled-components": "^3.4.10"
 	},
 	"proxy": "http://127.0.0.1:5000/",
 	"scripts": {
