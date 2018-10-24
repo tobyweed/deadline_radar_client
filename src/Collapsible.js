@@ -12,7 +12,7 @@ class Collapsible extends React.Component {
 
 	render() {
 		return (
-			<div className="collapsible">
+			<div>
 				<Button
 					className="btn-collapse"
 					bsStyle="primary"

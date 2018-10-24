@@ -80,6 +80,7 @@ class CreateDeadline extends Component {
 	handleFormSubmit(e) {
 		e.preventDefault();
 
+		console.log(this.state.priority);
 		//create the deadline!
 		return axios
 			.post('/create-deadline', {
@@ -106,17 +107,17 @@ class CreateDeadline extends Component {
 
 		//Check to make sure priority and numOfHours are integer values, to avoid
 		//sending server a bad request
-		if (
-			e.target.name === 'priority' &&
-			typeof this.state.priority !== 'number'
-		) {
-			this.setState({ priority: 1 });
-		} else if (
-			e.target.name === 'numOfHours' &&
-			typeof this.state.numOfHours !== 'number'
-		) {
-			this.setState({ numOfHours: 0 });
-		}
+		// if (
+		// 	e.target.name === 'priority' &&
+		// 	typeof this.state.priority !== 'number'
+		// ) {
+		// 	this.setState({ priority: 1 });
+		// } else if (
+		// 	e.target.name === 'numOfHours' &&
+		// 	typeof this.state.numOfHours !== 'number'
+		// ) {
+		// 	this.setState({ numOfHours: 0 });
+		// }
 	}
 }
 
