@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import AuthService from '../AuthService';
-import ShowDeadline from './ShowDeadline';
 import axios from 'axios';
+import { Button, Well, Collapse } from 'react-bootstrap';
 
 class Timeline extends Component {
 	render() {
-		const deadlineIds = this.props.deadlineIds;
-		const hrsOfDeadlines = this.mapIds();
+		const deadlines = this.props.deadlines;
+		const deadlineNums = this.mapIds();
 		const allHrs = this.createHourArray();
-		console.log(hrsOfDeadlines);
 		return (
-			<div>
+			<div className="timeline">
 				{allHrs.map(function(hr, i) {
-					if (hrsOfDeadlines.includes(hr)) {
-						return <span className="deadline" key={i} />;
+					if (deadlineNums[0].includes(hr)) {
+						let index = deadlineNums[0].indexOf(hr);
+						return (
+							<span>
+								<span
+									className={
+										'deadline _' + deadlineNums[1][index]
+									}
+									key={i}
+								/>
+							</span>
+						);
 					} else {
-						console.log(hrsOfDeadlines.includes(0));
 						return <span className="empty-hour" key={i} />;
 					}
 				})}
@@ -26,14 +34,15 @@ class Timeline extends Component {
 	mapIds() {
 		const hrsNow = Date.now() / 3600000;
 		var hrsOfDeadlines = [];
+		var prioritiesOfDeadlines = [];
+		var idsOfDeadlines = [];
 		this.props.deadlines.forEach((deadline, i) => {
 			const current_date = new Date(deadline.date);
 			const current_dateHrs = current_date.getTime() / 3600000;
 			const hrsFromNow = Math.round(current_dateHrs - hrsNow);
 			hrsOfDeadlines.push(hrsFromNow);
-			console.log(hrsOfDeadlines);
 		});
-		return hrsOfDeadlines;
+		return [hrsOfDeadlines, prioritiesOfDeadlines, idsOfDeadlines];
 	}
 
 	createHourArray() {

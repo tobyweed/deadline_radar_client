@@ -31,16 +31,62 @@
 	}
 }
 
-.deadline {
-	width: 5px;
-	height: 200px;
-	background-color: red;
+.btn-collapse {
+	display: block;
+	margin: 20px;
+}
+
+.collapsible {
+	border: 5px solig black;
+}
+
+.timeline {
+	margin: 20px;
+	padding: 20px;
+	border: 1px solid rgba(10, 80, 160, 1);
+	border-radius: 15px;
 	display: inline-block;
 }
 
+.deadline {
+	width: 7px;
+	height: 350px;
+	background-color: rgba(10, 80, 160, 1);
+	display: inline-block;
+}
+._1 {
+	background-color: rgb(137, 35, 119);
+}
+._2 {
+	background-color: rgb(193, 65, 244);
+}
+._3 {
+	background-color: rgb(130, 65, 244);
+}
+._4 {
+	background-color: rgb(65, 94, 244);
+}
+._5 {
+	background-color: rgb(65, 118, 244);
+}
+._6 {
+	background-color: rgb(65, 244, 235);
+}
+._7 {
+	background-color: rgb(85, 244, 65);
+}
+._8 {
+	background-color: rgb(244, 238, 65);
+}
+._9 {
+	background-color: rgb(244, 75, 66);
+}
+._10 {
+	background-color: rgb(244, 75, 66);
+}
 .empty-hour {
-	width: 5px;
-	height: 200px;
-	background-color: grey;
+	width: 7px;
+	height: 350px;
+	background-color: rgba(0, 0, 0, 0);
 	display: inline-block;
 }
